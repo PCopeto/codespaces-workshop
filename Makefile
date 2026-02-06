@@ -10,14 +10,23 @@ test: build
 build:
 	g++ $(SRC) -o $(APP_NAME)
 
+run: build
+	./$(APP_NAME)
+
 clean:
 	rm -f $(APP_NAME)
 
 # Usage:
 #   make build   # Compile the app
+#   make run     # Build and run interactively (enter commands at the prompt)
 #   make test    # Build and run tests
 #   make clean   # Remove the binary
 #
-# To run the app, use:
-#   ./unit_converter cm-to-inch 10
-#   ./unit_converter inch-to-cm 5
+# To run the app interactively:
+#   make run
+#
+# At the prompt, enter commands like:
+#   cm-to-inch 10
+#   inch-to-cm 5
+#   help
+#   exit

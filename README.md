@@ -1,9 +1,9 @@
 # Unit Converter CLI App
 
 ## Overview
-This is a simple C++ command line application that converts between centimeters and inches. You can easily extend it with new commands.
+This is a simple C++ command line application that converts between centimeters and inches.
 
-## Building the app
+## How to Build
 Build the app using Makefile:
 
 ```bash
@@ -11,17 +11,24 @@ make build
 ```
 Or directly with g++:
 ```bash
-g++ main.cpp -o app
+g++ main.cpp -o unit_converter
 ```
 
-## Running the app
-Run the app with a command:
+## How to Run
+Run the app interactively:
 
 ```bash
-./app help           # Show help
-./app cm-to-inch 10  # Convert 10 cm to inches
-./app inch-to-cm 5   # Convert 5 inches to cm
+make run
 ```
+Or directly:
+```bash
+./unit_converter
+```
+At the prompt, enter commands like:
+- cm-to-inch 10
+- inch-to-cm 5
+- help
+- exit
 
 ## How to Test
 Run all tests:

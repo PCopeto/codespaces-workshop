@@ -1,33 +1,66 @@
 #include <iostream>
 #include <string>
+#include <sstream>
 
-int main(int argc, char* argv[]) {
-    if (argc == 1) {
-        std::cout << "Unit Converter CLI App\n";
-        std::cout << "\nUsage: ./unit_converter [command] [value]\n";
-        std::cout << "\nAvailable commands:\n";
-        std::cout << "  help         - Show this help message\n";
-        std::cout << "  cm-to-inch   - Convert centimeters to inches\n";
-        std::cout << "  inch-to-cm   - Convert inches to centimeters\n";
-        return 0;
-    }
+int main(int argc, char *argv[])
+{
+    std::cout << "Unit Converter CLI App\n";
+    std::cout << "Type commands (help, cm-to-inch <cm>, inch-to-cm <inch>, exit):\n";
 
-    std::string cmd = argv[1];
-    if (cmd == "help") {
-        std::cout << "Usage: ./app [command] [value]\n";
-        std::cout << "Commands:\n";
-        std::cout << "  cm-to-inch [cm]   - Convert centimeters to inches\n";
-        std::cout << "  inch-to-cm [inch] - Convert inches to centimeters\n";
-    } else if (cmd == "cm-to-inch" && argc > 2) {
-        double cm = std::stod(argv[2]);
-        double inch = cm / 2.54;
-        std::cout << cm << " cm = " << inch << " inches\n";
-    } else if (cmd == "inch-to-cm" && argc > 2) {
-        double inch = std::stod(argv[2]);
-        double cm = inch * 2.54;
-        std::cout << inch << " inches = " << cm << " cm\n";
-    } else {
-        std::cout << "Unknown or incomplete command. Use 'help' for instructions.\n";
+    std::string line;
+    while (true)
+    {
+        std::cout << "> ";
+        if (!std::getline(std::cin, line))
+            break;
+        if (line.empty())
+            continue;
+
+        std::istringstream iss(line);
+        std::string cmd;
+        iss >> cmd;
+
+        if (cmd == "exit")
+        {
+            break;
+        }
+        else if (cmd == "help")
+        {
+            std::cout << "Commands:\n";
+            std::cout << "  cm-to-inch [cm]   - Convert centimeters to inches\n";
+            std::cout << "  inch-to-cm [inch] - Convert inches to centimeters\n";
+            std::cout << "  exit              - Quit the app\n";
+        }
+        else if (cmd == "cm-to-inch")
+        {
+            double cm;
+            if (iss >> cm)
+            {
+                double inch = cm / 2.54;
+                std::cout << cm << " cm = " << inch << " inches\n";
+            }
+            else
+            {
+                std::cout << "Usage: cm-to-inch [cm]\n";
+            }
+        }
+        else if (cmd == "inch-to-cm")
+        {
+            double inch;
+            if (iss >> inch)
+            {
+                double cm = inch * 2.54;
+                std::cout << inch << " inches = " << cm << " cm\n";
+            }
+            else
+            {
+                std::cout << "Usage: inch-to-cm [inch]\n";
+            }
+        }
+        else
+        {
+            std::cout << "Unknown or incomplete command. Use 'help' for instructions.\n";
+        }
     }
     return 0;
 }

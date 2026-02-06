@@ -3,7 +3,7 @@
 
 set -e
 
-APP=./app
+APP=./unit_converter
 
 fail() {
   echo "Test failed: $1"
@@ -14,19 +14,19 @@ fail() {
 make build
 
 # Test cm-to-inch
-result=$($APP cm-to-inch 10)
+result=$(echo "cm-to-inch 10" | $APP)
 [[ "$result" == *"10 cm = 3.93701 inches"* ]] || fail "cm-to-inch 10"
 
 # Test inch-to-cm
-result=$($APP inch-to-cm 5)
+result=$(echo "inch-to-cm 5" | $APP)
 [[ "$result" == *"5 inches = 12.7 cm"* ]] || fail "inch-to-cm 5"
 
 # Test help
-result=$($APP help)
-[[ "$result" == *"Unit Converter CLI App"* ]] || fail "help command"
+result=$(echo "help" | $APP)
+[[ "$result" == *"Commands:"* ]] || fail "help command"
 
 # Test unknown command
-result=$($APP foo 1)
+result=$(echo "foo 1" | $APP)
 [[ "$result" == *"Unknown or incomplete command"* ]] || fail "unknown command"
 
 echo "All tests passed!"
