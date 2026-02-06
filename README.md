@@ -37,4 +37,18 @@ make test
 ```
 This will build the app and run the test_app.sh script.
 
+# Hands-on-Exercise
+
+## 1: Create a `devcontainer` for the repository
+
+1. Create a `devcontainer` configuration for the repository using the C++ template.
+2. Rebuild the Codespace to pick up the new config. Use a full rebuild since the base image has changed.
+3. Add the GitLens extension to the devcontainer.
+4. Update the `.devcontainer/Dockerfile` to install the `clang-format` package.
+5. Rebuild the container to pick up the changes.
+
+## 2: Extend the unit_convert CLI using Copilot
+
+1. Using the Copilot Agent mode, add a new command to the unit converter CLI app.
+
 
