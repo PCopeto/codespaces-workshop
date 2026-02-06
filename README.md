@@ -1,26 +1,33 @@
-# Workshop CLI App
+# Unit Converter CLI App
 
 ## Overview
-This is a simple C++ command line application for a workshop.
+This is a simple C++ command line application that converts between centimeters and inches. You can easily extend it with new commands.
 
-## Instructions
-1. Fork this repository on GitHub.
-2. Clone your fork locally.
-3. Build the app:
-	```bash
-	g++ main.cpp -o app
-	```
-4. Run the app:
-	```bash
-	./app help
-	```
-5. Add a new command or option to the app (edit main.cpp).
-6. Commit your changes and push to your fork.
-7. Submit a pull request to the original repository.
+## Building the app
+Build the app using Makefile:
 
-## Example
-To add a new command, edit the section in `main.cpp` where commands are handled.
+```bash
+make build
+```
+Or directly with g++:
+```bash
+g++ main.cpp -o app
+```
 
-## Workshop Goal
-Practice using GitHub, C++, and command line development by extending this app.
-# codespaces-workshop
+## Running the app
+Run the app with a command:
+
+```bash
+./app help           # Show help
+./app cm-to-inch 10  # Convert 10 cm to inches
+./app inch-to-cm 5   # Convert 5 inches to cm
+```
+
+## How to Test
+Run all tests:
+```bash
+make test
+```
+This will build the app and run the test_app.sh script.
+
+
